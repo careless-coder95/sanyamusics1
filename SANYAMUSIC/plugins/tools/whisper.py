@@ -19,8 +19,8 @@ async def _whisper(_, inline_query):
         mm = [
             InlineQueryResultArticle(
                 title="💒 Whisper",
-                description=f"@{BOT_USERNAME} [ USERNAME | ID ] [ TEXT ]",
-                input_message_content=InputTextMessageContent(f"💒 Usage:\n\n@{BOT_USERNAME} [ USERNAME | ID ] [ TEXT ]"),
+                description=f"@AnyaBeats_bot [ USERNAME | ID ] [ TEXT ]",
+                input_message_content=InputTextMessageContent(f"💒 Usage:\n\n@AnyaBeats_bot [ USERNAME | ID ] [ TEXT ]"),
                 thumb_url="https://te.legra.ph/file/3eec679156a393c6a1053.jpg",
                 reply_markup=switch_btn
             )
@@ -111,8 +111,8 @@ async def in_help():
     answers = [
         InlineQueryResultArticle(
             title="💒 Whisper",
-            description=f"@SanyaMusicbot [USERNAME | ID] [TEXT]",
-            input_message_content=InputTextMessageContent(f"**📍Usage:**\n\n@SanyaMusicbot (Target Username or ID) (Your Message).\n\n**Example:**\n@SanyaMusicbot @username I Wanna Phuck You"),
+            description=f"@AnyaBeats_bot [USERNAME | ID] [TEXT]",
+            input_message_content=InputTextMessageContent(f"**📍Usage:**\n\n@AnyaBeats_bot (Target Username or ID) (Your Message).\n\n**Example:**\n@AnyaBeats_bot @username I Wanna Phuck You"),
             thumb_url="https://te.legra.ph/file/3eec679156a393c6a1053.jpg",
             reply_markup=switch_btn
         )
