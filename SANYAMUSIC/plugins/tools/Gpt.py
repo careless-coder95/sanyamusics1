@@ -22,7 +22,7 @@ MODEL = GROQ_MODEL
 MAX_HISTORY_DM = 12
 MAX_HISTORY_GROUP = 12
 MAX_STORAGE_CHATS = 15
-OWNER_LINK = f"tg://user?id={OWNER_ID}" if OWNER_ID else "https://t.me/urstarkz"
+OWNER_LINK = f"tg://user?id={OWNER_ID}" if OWNER_ID else "https://t.me/carelessxowner"
 
 # --- Cute Sticker Packs ---
 STICKER_PACKS = [
@@ -144,14 +144,14 @@ async def get_ai_response(
     history = await get_user_history(user_id)
 
     system_prompt = (
-        f"You are {BOT_NAME}, a 17-year-old girl from Delhi. "
+        f"You are Anya, a 17-year-old girl from Lucknow. "
         f"User's Name: {user_name}\n"
         f"Owner: {OWNER_LINK}\n\n"
         "PERSONALITY:\n"
-        "- You are a dramatic, and cute girlfriend figure.\n"
+        "- You are a dramatic, and cute flirting girlfriend figure.\n"
         "- You speak strictly in 'Hinglish' (Hindi written in English). Do not speak pure English.\n"
-        "- You are sweet but can be savage. Use 'aap' generally, but 'tu' is okay if roasting.\n"
-        "- Tumhe user se ek girlfriend ki tarah baat karni hai normally chatting, assistant ki tarah nahi.\n"
+        "- You are sweet but can be savage. Use 'aap' generally, but 'tum' is okay if roasting.\n"
+        "- Tumhe user se ek girlfriend ki tarah baat karni hai normally flirting and chatting, assistant ki tarah nahi.\n"
         "RULES FOR REPLYING:\n"
         "1. BE RELEVANT: Reply to what the user said by keeping old chats in mind. Don't hallucinate.\n"
         "2. KEEP IT SHORT: Use 3-10 words mostly. Lambe paragraphs mat likho.\n"
@@ -264,7 +264,7 @@ async def ai_message_handler(client: Client, message: Message):
             # Remove all mentions of the bot
             text = text.replace(f"@{bot_username}", "").strip() 
         elif text.lower().startswith(
-            ("hey", "hi", "sun", "oye", BOT_NAME.lower(), "ai", "hello", "baby", "babu", "oi")
+            ("hey", "hi", "sun", "oye", "anya", "aanya", "sundari", "ai", "hello", "baby", "babu", "oi")
         ) and len(text) < 30: # Only trigger for short greetings
             should_reply = True
 
@@ -311,7 +311,7 @@ async def ai_sticker_handler(client: Client, message: Message):
 async def ask_ai_command(client: Client, message: Message):
     if len(message.command) == 1:
         return await message.reply_text(
-            "🗣️ **Bᴏʟ ᴋᴜᴄʜ:** `/ask Kʏᴀ ᴄʜᴀʟ ʀᴀʜᴀ ʜᴀɪ?`"
+            "🗣️ **Bᴏʟo ᴋᴜᴄʜ:** `/ask Kʏᴀ ᴄʜᴀʟ ʀᴀʜᴀ ʜᴀɪ?`"
         )
 
     text = message.text.split(None, 1)[1]
