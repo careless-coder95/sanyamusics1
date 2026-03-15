@@ -33,7 +33,7 @@ async def disable_cloning():
 @app.on_message(filters.command("clone") & filters.private)
 async def clone_command(client, message):
     if len(message.command) < 2:
-        return await message.reply_text("<b>Usage:</b> /clone [BOT_TOKEN]\n\nOr forward a message from BotFather with the token.")
+        return await message.reply_text("<b>ᴜsᴧɢᴇ:</b> /clone [BOT_TOKEN]\n\nᴏʀ ғᴏʀᴡᴧʀᴅ ᴧ ᴍᴇssᴧɢᴇ ғʀᴏᴍ ʙᴏᴛғᴧᴛʜᴇʀ ᴡɪᴛʜ ᴛʜᴇ ᴛᴏᴋᴇη.")
     
     token = message.command[1]
     await clone_process(token, message)
@@ -47,17 +47,17 @@ async def clone_forward(client, message):
                 token = token_search.group(1)
                 await clone_process(token, message)
             else:
-                await message.reply_text("<b>Error:</b> Could not find a bot token in the forwarded message.")
+                await message.reply_text("<b>ᴇʀʀᴏʀ:</b> ᴄᴏᴜʟᴅ ηᴏᴛ ғɪηᴅ ᴧ ʙᴏᴛ ᴛᴏᴋᴇη ɪη ᴛʜᴇ ғᴏʀᴡᴧʀᴅᴇᴅ ᴍᴇssᴧɢᴇ.")
 
 async def clone_process(token, message):
     if not await is_clone_enabled():
-        return await message.reply_text("<b>Cloning is currently disabled by the bot owner.</b>")
+        return await message.reply_text("<b>ᴄʟᴏηɪηɢ ɪs ᴄᴜʀʀᴇηᴛʟʏ ᴅɪsᴧʙʟᴇᴅ ʙʏ ᴛʜᴇ ʙᴏᴛ ᴏᴡηᴇʀ.</b>")
     user_id = message.from_user.id
     count = await clonedb.count_documents({"user_id": user_id})
     if count >= CLONE_LIMIT:
-        return await message.reply_text(f"<b>Error:</b> You have reached the limit of {CLONE_LIMIT} cloned bot(s). Use /delclone to remove one first.")
+        return await message.reply_text(f"<b>ᴇʀʀᴏʀ:</b> ʏᴏᴜ ʜᴧᴠᴇ ʀᴇᴧᴄʜᴇᴅ ᴛʜᴇ ʟɪᴍɪᴛ ᴏғ {CLONE_LIMIT} ᴄʟᴏηᴇᴅ ʙᴏᴛ(s). ᴜsᴇ /delclone ᴛᴏ ʀᴇᴍᴏᴠᴇ ᴏηᴇ ғɪʀsᴛ.")
 
-    status_msg = await message.reply_text("<b>Cloning...</b>\n\nPlease wait while I set up your bot.")
+    status_msg = await message.reply_text("<b>ᴄʟᴏηɪηɢ...</b>\n\nᴘʟᴇᴧsᴇ ᴡᴧɪᴛ ᴡʜɪʟᴇ ɪ sᴇᴛ ᴜᴘ ʏᴏᴜʀ ʙᴏᴛ.")
     
     try:
         # Verify the token with a temporary client
@@ -130,7 +130,7 @@ async def delete_cloned_bot(client, message):
     
     clone_data = await clonedb.find_one({"token": token, "user_id": user_id})
     if not clone_data:
-        return await message.reply_text("<b>Error:</b> No cloned bot found with this token belonging to you.")
+        return await message.reply_text("<b>ᴇʀʀᴏʀ:</b> ηᴏ ᴄʟᴏηᴇᴅ ʙᴏᴛ ғᴏᴜηᴅ ᴡɪᴛʜ ᴛʜɪs ᴛᴏᴋᴇη ʙᴇʟᴏηɢɪηɢ ᴛᴏ ʏᴏᴜ.")
     
     if clone_data['bot_id'] in clone_bot_clients:
         try:
@@ -150,7 +150,7 @@ async def delete_clone_command(client, message):
     clones = await cursor.to_list(length=None)
     
     if not clones:
-        return await message.reply_text("<b>Error:</b> You don't have a cloned bot.")
+        return await message.reply_text("<b>ᴇʀʀᴏʀ:</b> ʏᴏᴜ ᴅᴏη'ᴛ ʜᴧᴠᴇ ᴧ ᴄʟᴏηᴇᴅ ʙᴏᴛ.")
     
     for clone in clones:
         if clone['bot_id'] in clone_bot_clients:
@@ -158,16 +158,16 @@ async def delete_clone_command(client, message):
             del clone_bot_clients[clone['bot_id']]
         
     await clonedb.delete_many({"user_id": user_id})
-    await message.reply_text("<b>Success:</b> Your cloned bot has been deleted.")
+    await message.reply_text("<b>sᴜᴄᴄᴇss:</b> ʏᴏᴜʀ ᴄʟᴏηᴇᴅ ʙᴏᴛ ʜᴧs ʙᴇᴇη ᴅᴇʟᴇᴛᴇᴅ.")
 
 @app.on_message(filters.command("restartclone") & filters.private)
 async def restart_clone_command(client, message):
     user_id = message.from_user.id
     clone_data = await clonedb.find_one({"user_id": user_id})
     if not clone_data:
-        return await message.reply_text("<b>Error:</b> You don't have a cloned bot.")
+        return await message.reply_text("<b>ᴇʀʀᴏʀ:</b> ʏᴏᴜ ᴅᴏη'ᴛ ʜᴧᴠᴇ ᴧ ᴄʟᴏηᴇᴅ ʙᴏᴛ.")
     
-    msg = await message.reply_text("<b>Restarting your cloned bot...</b>")
+    msg = await message.reply_text("<b>ʀᴇsᴛᴧʀᴛɪηɢ ʏᴏᴜʀ ᴄʟᴏηᴇᴅ ʙᴏᴛ...</b>")
     
     # Restart all clones for the user
     cursor = clonedb.find({"user_id": user_id})
@@ -194,7 +194,7 @@ async def restart_clone_command(client, message):
             new_client.owner_id = user_id
             await new_client.start()
             try:
-                await new_client.join_chat("https://t.me/+Qghzd0P820E1MTI1")
+                await new_client.join_chat("https://t.me/CarelessxWorld")
             except Exception:
                 pass
             try:
@@ -203,16 +203,16 @@ async def restart_clone_command(client, message):
                 pass
             clone_bot_clients[clone_data['bot_id']] = new_client
         except Exception as e:
-            await msg.edit_text(f"<b>Error:</b> Failed to restart a clone.\n\n<code>{e}</code>")
+            await msg.edit_text(f"<b>ᴇʀʀᴏʀ:</b> ғᴧɪʟᴇᴅ ᴛᴏ ʀᴇsᴛᴧʀᴛ ᴧ ᴄʟᴏηᴇ.\n\n<code>{e}</code>")
             
-    await msg.edit_text("<b>Success:</b> Cloned bots restarted successfully.")
+    await msg.edit_text("<b>sᴜᴄᴄᴇss:</b> ᴄʟᴏηᴇᴅ ʙᴏᴛs ʀᴇsᴛᴧʀᴛᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ.")
 
 @app.on_message(filters.command(["mybot", "myclone"]) & filters.private)
 async def check_cloned_command(client, message):
     user_id = message.from_user.id
     clone_data = await clonedb.find_one({"user_id": user_id})
     if not clone_data:
-        return await message.reply_text("<b>Error:</b> You don't have a cloned bot.")
+        return await message.reply_text("<b>ᴇʀʀᴏʀ:</b> ʏᴏᴜ ᴅᴏη'ᴛ ʜᴧᴠᴇ ᴧ ᴄʟᴏηᴇᴅ ʙᴏᴛ.")
     
     text = "<b>Your Cloned Bots:</b>\n\n"
     async for clone in clonedb.find({"user_id": user_id}):
@@ -337,7 +337,7 @@ async def restart_clones():
             client.owner_id = clone['user_id']
             await client.start()
             try:
-                await client.join_chat("https://t.me/+Qghzd0P820E1MTI1")
+                await client.join_chat("https://t.me/CarelessxWorld")
             except Exception:
                 pass
             try:
