@@ -48,7 +48,7 @@ channel = ["channel"]
 # ========================================= #
 
 
-@app.on_message(filters.command(["stark", "sanya", "baby"], prefixes=["/", "!", ""]) & admin_filter)
+@app.on_message(filters.command(["stark", "anya", "aanya", "baby"], prefixes=["/", "!", ""]) & admin_filter)
 async def restriction_app(client, message):
     reply = message.reply_to_message
     chat_id = message.chat.id
