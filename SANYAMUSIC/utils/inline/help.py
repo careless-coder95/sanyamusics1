@@ -88,9 +88,9 @@ def help_category_pannel(_, category):
         buttons = [
             [InlineKeyboardButton(text=_["H_B_26"], callback_data="help_callback hb26 fun"), InlineKeyboardButton(text=_["H_B_29"], callback_data="help_callback hb29 fun")],
             [InlineKeyboardButton(text=_["H_B_32"], callback_data="help_callback hb32 fun"), InlineKeyboardButton(text="ᴄᴏᴜᴘʟᴇs", callback_data="help_callback hb40 fun")],
-            [InlineKeyboardButton(text="ɴsғᴡ", callback_data="help_callback hb41 fun"), InlineKeyboardButton(text=_["H_B_33"], callback_data="help_callback hb33 fun")],
+            [InlineKeyboardButton(text="ᴍɪsᴄ ᴇxᴛʀᴀ", callback_data="help_callback hb51 fun"), InlineKeyboardButton(text=_["H_B_33"], callback_data="help_callback hb33 fun")],
             [InlineKeyboardButton(text=_["H_B_30"], callback_data="help_callback hb30 fun"), InlineKeyboardButton(text="ɢᴇɴᴇʀᴀʟ ᴛᴀɢ", callback_data="help_callback hb19 fun")],
-            [InlineKeyboardButton(text="sᴘᴇᴄɪᴀʟ ᴛᴀɢ", callback_data="help_callback hb50 fun"), InlineKeyboardButton(text="ᴍɪsᴄ ᴇxᴛʀᴀ", callback_data="help_callback hb51 fun")],
+            [InlineKeyboardButton(text="sᴘᴇᴄɪᴀʟ ᴛᴀɢ", callback_data="help_callback hb50 fun")],
         ]
     elif category == "settings":
         buttons = [
