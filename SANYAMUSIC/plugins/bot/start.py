@@ -148,6 +148,7 @@ async def start_pm(client, message: Message, _):
             random.choice(STARK_IMG),
             caption=_["start_2"].format(message.from_user.mention, app.mention, UP, DISK, CPU, RAM, served_users, served_chats),
             reply_markup=InlineKeyboardMarkup(out),
+            has_spoiler=True   # <-- ye add karo
         )
         if await is_on_off(2):
             await app.send_message(
@@ -165,6 +166,7 @@ async def start_gp(client, message: Message, _):
         random.choice(STARK_IMG),
         caption=_["start_1"].format(app.mention, get_readable_time(uptime)),
         reply_markup=InlineKeyboardMarkup(out),
+        has_spoiler=True   # <-- ye add karo
     )
     return await add_served_chat(message.chat.id)
 
